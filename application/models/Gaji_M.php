@@ -21,7 +21,6 @@ class Gaji_M extends CI_Model {
 			ON data_jabatan.nama_jabatan = data_karyawan.jabatan
 			WHERE data_kehadiran.bulan = '$bulanTahun'
 			ORDER BY data_karyawan.nama_karyawan ASC")->result_array();*/
-
 		$this->db->select('*');
 		$this->db->from('data_karyawan');
 		$this->db->join('data_kehadiran', 'data_kehadiran.username = data_karyawan.username');
@@ -44,6 +43,7 @@ class Gaji_M extends CI_Model {
 		$this->db->join('data_jabatan', 'data_jabatan.nama_jabatan = data_karyawan.jabatan');
 		$this->db->join('data_bonus', 'data_bonus.nama_jabatan = data_karyawan.jabatan');
 		$this->db->where('data_kehadiran.bulan', $bulanTahun);
+    $this->db->group_by('data_karyawan.username');
 		$this->db->order_by('data_karyawan.nama_karyawan', 'asc');
 		return $this->db->get()->result_array();
 	}

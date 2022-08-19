@@ -58,7 +58,8 @@ class Gaji extends CI_Controller
 			ON data_jabatan.nama_jabatan = data_karyawan.jabatan
 			INNER JOIN data_bonus
 			ON data_bonus.nama_jabatan = data_karyawan.jabatan
-			WHERE data_kehadiran.bulan = '$bulanTahun'
+			WHERE data_kehadiran.bulan = '".$bulanTahun."'
+      group by data_karyawan.username
 			ORDER BY data_karyawan.nama_karyawan ASC")->result();
 
 		$this->load->view('temp_admin/header', $data);
@@ -90,6 +91,7 @@ class Gaji extends CI_Controller
 			INNER JOIN data_jabatan
 			ON data_jabatan.nama_jabatan = data_karyawan.jabatan
 			WHERE data_kehadiran.bulan = '$bulanTahun'
+      group by data_karyawan.username
 			ORDER BY data_karyawan.nama_karyawan ASC")->result();
 
 		$this->load->view('temp_admin/header', $data);

@@ -56,7 +56,7 @@ class Bonus extends CI_Controller
 			foreach ($post['bulan'] as $key => $value) {
 				if ($post['bulan'][$key] != '' || $post['username'][$key] != '' ) {
 
-					$data[] = 
+					$data['data'][] = 
 					[
 						'bulan' => $post['bulan'][$key],
 						'username' => $post['username'][$key],
@@ -69,8 +69,7 @@ class Bonus extends CI_Controller
 					];
 				}
 			}
-
-			$this->Bonus_M->tambah_batch($data);
+			$this->Bonus_M->tambah_batch($data['data']);
 			$this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
 				<strong>Data Berhasil Ditambahkan!</strong>
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
