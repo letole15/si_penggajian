@@ -75,12 +75,10 @@ class Jabatan extends CI_Controller
 
 	public function edit($id)
 	{
-		$id = $this->session->userdata('id_karyawan');
 		$data['profil'] = $this->db->query("SELECT * FROM data_karyawan WHERE id_karyawan = '$id'")->result();
 		
 		$where = array('id_jabatan' => $id);
 		$data['jabatan'] = $this->db->query("SELECT * FROM data_jabatan WHERE id_jabatan = '$id' ")->result();
-		
 		$data['title'] = "Edit Data";
 
 		$this->load->view('temp_admin/header', $data);
@@ -104,7 +102,7 @@ class Jabatan extends CI_Controller
 			$data = array(
 				'nama_jabatan' => $nama_jabatan,
 				'gaji_pokok' => $gaji_pokok,
-				'uang_makan' => $uang_makan,
+				'uang_transport' => $uang_makan,
 			);
 
 			$where = array('id_jabatan' => $id);

@@ -6,7 +6,6 @@
 
 			<div class="card" style="width: 60%">
 				<div class="card-body">
-					
 					<?php foreach ($jabatan as $j) : ?>
 
 					<?= form_open('admin/jabatan/editAksi/'); ?>
@@ -28,7 +27,7 @@
 
 						<div class="form-group">
 							<label>Uang Makan</label>
-							<input type="text" name="uang_makan" class="form-control" value="<?= $j->uang_makan ?>">
+							<input type="text" name="uang_makan" class="form-control" value="<?= $j->uang_transport ?>">
 							<?= form_error ('uang_makan', '<div class="text-small text-danger"> </div>') ?>
 						</div>
 

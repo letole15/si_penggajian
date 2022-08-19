@@ -43,8 +43,8 @@
                       <td><?= $no++ ?></td>
                       <td><?= $j->nama_jabatan ?></td>
                       <td>Rp. <?= number_format($j->gaji_pokok, 0,',','.') ?></td>
-                      <td>Rp. <?= number_format($j->uang_makan, 0,',','.') ?></td>
-                      <td>Rp. <?= number_format($j->gaji_pokok + $j->uang_makan, 0,',','.') ?></td>
+                      <td>Rp. <?= number_format($j->uang_transport, 0,',','.') ?></td>
+                      <td>Rp. <?= number_format($j->gaji_pokok + $j->uang_transport, 0,',','.') ?></td>
                       <td>
                       	<center>
                       		<a class="btn btn-sm btn-primary" href="<?= base_url('admin/jabatan/edit/'.$j->id_jabatan) ?>"><i class="fas fa-edit"></i></a>
