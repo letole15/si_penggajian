@@ -26,7 +26,7 @@ class DataGaji extends CI_Controller
 		$data['title'] = "Data Gaji";
 		$username = $this->session->userdata('username');
 		$data['potongan'] = $this->sipModel->get_data('data_potongan_gaji')->result();
-		$data['gaji'] = $this->db->query("SELECT data_karyawan.nama_karyawan, data_karyawan.username, data_jabatan.gaji_pokok, data_jabatan.uang_makan, data_kehadiran.alpha, data_kehadiran.bulan, data_kehadiran.id_kehadiran
+		$data['gaji'] = $this->db->query("SELECT data_karyawan.nama_karyawan, data_karyawan.username, data_jabatan.gaji_pokok, data_jabatan.uang_transport, data_kehadiran.alpha, data_kehadiran.bulan, data_kehadiran.id_kehadiran
 			FROM data_karyawan
 			INNER JOIN data_kehadiran ON data_kehadiran.username = data_karyawan.username
 			INNER JOIN data_jabatan ON data_jabatan.nama_jabatan = data_karyawan.jabatan
@@ -50,7 +50,7 @@ class DataGaji extends CI_Controller
 		$tahun = $this->input->post('tahun');
 		$bulantahun = $bulan.$tahun;
 
-		$data['print_slip'] = $this->db->query("SELECT data_karyawan.username, data_karyawan.nama_karyawan, data_jabatan.nama_jabatan, data_jabatan.gaji_pokok, data_jabatan.uang_makan, data_kehadiran.alpha, data_kehadiran.hadir, data_kehadiran.libur, data_kehadiran.bulan
+		$data['print_slip'] = $this->db->query("SELECT data_karyawan.username, data_karyawan.nama_karyawan, data_jabatan.nama_jabatan, data_jabatan.gaji_pokok, data_jabatan.uang_transport, data_kehadiran.alpha, data_kehadiran.hadir, data_kehadiran.libur, data_kehadiran.bulan
 			FROM data_karyawan
 			INNER JOIN data_kehadiran ON data_kehadiran.username = data_karyawan.username  
 			INNER JOIN data_jabatan ON data_jabatan.nama_jabatan = data_karyawan.jabatan  

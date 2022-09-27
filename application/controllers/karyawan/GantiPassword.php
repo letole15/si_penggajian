@@ -7,10 +7,10 @@
 		{
 			$data['title'] = "Ganti Password";
 
-			$this->load->view('temp_admin/header', $data);
-			$this->load->view('temp_admin/sidebar');
+			$this->load->view('temp_karyawan/header', $data);
+			$this->load->view('temp_karyawan/sidebar');
 			$this->load->view('form_ganti_pass', $data);
-			$this->load->view('temp_admin/footer');
+			$this->load->view('temp_karyawan/footer');
 		}
 
 		public function GantiPassAksi()

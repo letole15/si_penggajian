@@ -18,16 +18,16 @@
   </center>
 
   <?php 
-    if((isset($_GET['bulan']) && $_GET['bulan']!='') && (isset($_GET['tahun']) && $_GET['tahun']!=''))
-        {
-          $bulan = $_GET['bulan'];
-          $tahun = $_GET['tahun'];
-          $bulantahun = $bulan.$tahun;
-        } else {
-          $bulan = date('m');
-          $tahun = date('Y');
-          $bulantahun = $bulan.$tahun;
-        }
+  if((isset($_GET['bulan']) && $_GET['bulan']!='') && (isset($_GET['tahun']) && $_GET['tahun']!=''))
+  {
+    $bulan = $_GET['bulan'];
+    $tahun = $_GET['tahun'];
+    $bulanTahun = $bulan.$tahun;
+  } else {
+    $bulan = date('m');
+    $tahun = date('Y');
+    $bulanTahun = $bulan.$tahun;
+  }
   ?>
 
   <?php foreach ($potongan as $ps) { ?>
@@ -68,71 +68,86 @@
 
   <?php } ?>
 
-          <table class="table table-striped table-bordered mt-2">
-            <thead>
-              <tr class="text-center">
-                <th>No</th>
-                <th>Keterangan</th>
-                <th>Jumlah</th>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Gaji Pokok</td>
-                <td>Rp. <?= number_format($ps->gaji_pokok,0,',','.') ?></td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Uang Makan</td>
-                <td>Rp. <?= number_format($ps->uang_makan * $ps->hadir,0,',','.') ?></td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Potongan</td>
-                <td>Rp. <?= number_format($potongan_gaji,0,',','.') ?></td>
-              </tr>
-              <tr>
-                <th colspan="2" style="text-align: right;">Total Gaji</th>
-                <th>Rp. <?= number_format($ps->gaji_pokok + $ps->uang_makan - $potongan_gaji,0,',','.') ?></th>
-              </tr>
-            </thead>
-      </table>
+  <table class="table table-striped table-bordered mt-2">
+    <thead>
+      <tr class="text-center">
+        <th>No</th>
+        <th>Keterangan</th>
+        <th>Jumlah</th>
+      </tr>
+      <tr>
+        <td>1</td>
+        <td>Gaji Pokok</td>
+        <td>Rp. <?= number_format($ps->gaji_pokok,0,',','.') ?></td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Intensif</td>
+        <td>Rp. <?= number_format($ps->intensif,0,',','.') ?></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Bonus</td>
+        <td>Rp. <?= number_format($ps->bonus,0,',','.') ?></td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>THR</td>
+        <td>Rp. <?= number_format($ps->thr,0,',','.') ?></td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Uang Transport</td>
+        <td>Rp. <?= number_format($ps->uang_transport * $ps->hadir,0,',','.') ?></td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Potongan</td>
+        <td>Rp. <?= number_format($potongan_gaji,0,',','.') ?></td>
+      </tr>
+      <tr>
+        <th colspan="2" style="text-align: right;">Total Gaji</th>
+        <th>Rp. <?= number_format($ps->gaji_pokok + $ps->intensif + $ps->bonus + $ps->thr + $ps->uang_transport - $potongan_gaji,0,',','.') ?></th>
+      </tr>
+    </thead>
+  </table>
 
-      <table style="width: 20%">
-        <tr>
-          <td>Hadir</td>
-          <td>:</td>
-          <td><?= $ps->hadir ?></td>
-          <td>|</td>
-          <td>Libur</td>
-          <td>:</td>
-          <td><?= $ps->libur ?></td>
-          <td>|</td>
-          <td>Alpha</td>
-          <td>:</td>
-          <td><?= $ps->alpha ?></td>
-        </tr>
-      </table>
+  <table style="width: 20%">
+    <tr>
+      <td>Hadir</td>
+      <td>:</td>
+      <td><?= $ps->hadir ?></td>
+      <td> | </td>
+      <td>Libur</td>
+      <td>:</td>
+      <td><?= $ps->libur ?></td>
+      <td> | </td>
+      <td>Alpha</td>
+      <td>:</td>
+      <td><?= $ps->alpha ?></td>
+    </tr>
+  </table>
 
-      <table width="100%">
+  <table width="100%">
+    <br>
+    <tr>
+      <td>
+        <p>Karyawan<br> Pelangi Frame </p>
         <br>
-        <tr>
-          <td>
-            <p>Karyawan<br> Pelangi Frame </p>
-              <br>
-              <br>
-              <br>
-            <p>__________________________</p>
-            <p><?= $ps->nama_karyawan ?></p>  
-          </td>
-          <td width="200px">
-            <p>Jakarta, <?= date("d M Y") ?> <br> Owner Pelangi Frame </p>
-            <br>
-            <br>
-            <br>
-            <p>__________________________</p>
-          </td>
-        </tr>
-      </table>
+        <br>
+        <br>
+        <p>__________________________</p>
+        <p><?= $ps->nama_karyawan ?></p>  
+      </td>
+      <td width="200px">
+        <p>Jakarta, <?= date("d M Y") ?> <br> Owner Pelangi Frame </p>
+        <br>
+        <br>
+        <br>
+        <p>__________________________</p>
+      </td>
+    </tr>
+  </table>
 
 </body>
 </html>

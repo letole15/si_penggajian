@@ -42,17 +42,27 @@ class SlipGaji extends CI_Controller
 		$data['potongan'] = $this->sipModel->get_data('data_potongan_gaji')->result();
 
 		$nama = $this->input->post('nama_karyawan');
+
 		$bulan = $this->input->post('bulan');
 		$tahun = $this->input->post('tahun');
 		$bulanTahun = $bulan.$tahun;
 
-		$data['print_slip'] = $this->db->query("SELECT data_karyawan.username, data_karyawan.nama_karyawan, data_jabatan.nama_jabatan, data_jabatan.gaji_pokok, data_jabatan.intensif, data_jabatan.uang_transport, data_kehadiran.alpha, data_kehadiran.hadir, data_kehadiran.libur, data_kehadiran.alpha, data_bonus.bonus, data_bonus.thr
+		/*$data['print_slip'] = $this->db->query("SELECT data_karyawan.username, data_karyawan.nama_karyawan, data_jabatan.nama_jabatan, data_jabatan.gaji_pokok, data_jabatan.intensif, data_jabatan.uang_transport, data_kehadiran.alpha, data_kehadiran.hadir, data_kehadiran.libur, data_kehadiran.alpha, data_bonus.bonus, data_bonus.thr
 			FROM data_karyawan
 			INNER JOIN data_kehadiran ON data_kehadiran.username = data_karyawan.username  
 			INNER JOIN data_jabatan ON data_jabatan.nama_jabatan = data_karyawan.jabatan  
 			INNER JOIN data_bonus ON data_bonus.nama_jabatan = data_karyawan.jabatan  
-			WHERE data_kehadiran.bulan = '$bulanTahun' AND data_kehadiran.nama_karyawan = '$nama'")->result();
+			WHERE data_kehadiran.bulan = '$bulanTahun' AND data_kehadiran.nama_karyawan = '$nama'")->result();*/
 		/*var_dump($data);
+		die();*/
+
+    $data['print_slip'] = $this->db->query("SELECT data_karyawan.username, data_karyawan.nama_karyawan, data_jabatan.nama_jabatan, data_jabatan.gaji_pokok, data_jabatan.intensif, data_jabatan.uang_transport, data_kehadiran.hadir, data_kehadiran.libur, data_kehadiran.alpha, data_bonus.bonus, data_bonus.thr
+            FROM data_karyawan
+            INNER JOIN data_kehadiran ON data_kehadiran.username = data_karyawan.username  
+            INNER JOIN data_jabatan ON data_jabatan.nama_jabatan = data_karyawan.jabatan  
+            INNER JOIN data_bonus ON data_bonus.nama_jabatan = data_karyawan.jabatan  
+            WHERE data_kehadiran.nama_karyawan = '$nama' and data_bonus.bulan='$bulanTahun' and data_kehadiran.bulan='$bulanTahun'")->result();
+    /*var_dump($data);
 		die();*/
 		
 		$this->load->view('temp_admin/header', $data);

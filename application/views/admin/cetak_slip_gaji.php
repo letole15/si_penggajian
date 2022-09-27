@@ -14,11 +14,11 @@
 	<center>
 		<h1><img class="img-profile" src="<?= base_url('assets/foto/logo-2.jpg') ?>"></h1>
     <hr style="width: 25%; border-width: 5px; color: black">
-		<h2>Daftar Slip Gaji</h2>
+    <h2>Daftar Slip Gaji</h2>
     <hr style="width: 25%; border-width: 5px; color: black">
   </center>
 
-  <?php 
+<?php 
   if((isset($_GET['bulan']) && $_GET['bulan']!='') && (isset($_GET['tahun']) && $_GET['tahun']!=''))
   {
     $bulan = $_GET['bulan'];

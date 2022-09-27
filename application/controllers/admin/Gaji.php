@@ -50,17 +50,28 @@ class Gaji extends CI_Controller
 		$data['potongan'] = $this->sipModel->get_data('data_potongan_gaji')->result();
 		/*$data['gaji'] = $this->Gaji_M->tampil_gaji($bulanTahun);*/
 
-		$data['gaji'] = $this->db->query("SELECT data_karyawan.username, data_karyawan.nama_karyawan, data_karyawan.jenis_kelamin, data_jabatan.nama_jabatan, data_jabatan.gaji_pokok, data_jabatan.intensif, data_jabatan.uang_transport, data_kehadiran.alpha, data_kehadiran.hadir, data_kehadiran.libur, data_bonus.bonus, data_bonus.thr
+		/*$data['gaji'] = $this->db->query("SELECT data_karyawan.username, data_karyawan.nama_karyawan, data_karyawan.jenis_kelamin, data_jabatan.nama_jabatan, data_jabatan.gaji_pokok, data_jabatan.intensif, data_jabatan.uang_transport, data_kehadiran.alpha, data_kehadiran.hadir, data_kehadiran.libur, data_bonus.bonus, data_bonus.thr
 			FROM data_karyawan
 			INNER JOIN data_kehadiran 
 			ON data_kehadiran.username = data_karyawan.username
 			INNER JOIN data_jabatan
 			ON data_jabatan.nama_jabatan = data_karyawan.jabatan
 			INNER JOIN data_bonus
-			ON data_bonus.nama_jabatan = data_karyawan.jabatan
+			ON data_bonus.username = data_karyawan.username
 			WHERE data_kehadiran.bulan = '".$bulanTahun."'
-      group by data_karyawan.username
-			ORDER BY data_karyawan.nama_karyawan ASC")->result();
+      		group by data_karyawan.username
+			ORDER BY data_karyawan.nama_karyawan ASC")->result();*/
+
+			$data['gaji'] = $this->db->query("SELECT data_karyawan.username, data_karyawan.nama_karyawan, data_karyawan.jenis_kelamin, data_karyawan.jabatan, data_jabatan.nama_jabatan, data_jabatan.gaji_pokok, data_jabatan.intensif, data_jabatan.uang_transport, data_kehadiran.alpha, data_kehadiran.hadir, data_kehadiran.libur,data_bonus.bonus, data_bonus.thr
+				from data_karyawan
+				inner JOIN data_jabatan
+				ON data_karyawan.jabatan = data_jabatan.nama_jabatan
+				inner join data_kehadiran
+				ON data_kehadiran.username = data_karyawan.username 
+				INNER JOIN data_bonus
+				ON data_bonus.username = data_karyawan.username AND data_bonus.bulan='".$bulanTahun."'
+				WHERE data_kehadiran.bulan='".$bulanTahun."'
+				ORDER BY data_karyawan.nama_karyawan ASC")->result();
 
 		$this->load->view('temp_admin/header', $data);
 		$this->load->view('temp_admin/sidebar');

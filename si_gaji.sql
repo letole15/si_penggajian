@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 10 Sep 2022 pada 13.36
+-- Waktu pembuatan: 27 Sep 2022 pada 17.26
 -- Versi server: 10.1.31-MariaDB
 -- Versi PHP: 7.2.3
 
@@ -45,7 +45,7 @@ CREATE TABLE `data_bonus` (
 
 INSERT INTO `data_bonus` (`id_bonus`, `bulan`, `username`, `nama_karyawan`, `jenis_kelamin`, `nama_jabatan`, `bonus`, `thr`) VALUES
 (17, '052022', 'ADM-01', 'Ami', 'Perempuan', 'Admin Divisi', 50000, 2100000),
-(23, '062022', 'ADM-01', 'Ami', 'Perempuan', 'Admin Divisi', 0, 0),
+(23, '062022', 'ADM-01', 'Ami', 'Perempuan', 'Admin Divisi', 50000, 0),
 (24, '062022', 'PSG-01', 'Hamdan', 'Laki-laki', 'Tukang Pasang Bingkai 1', 0, 0),
 (25, '062022', 'PSG-02', 'Chandra', 'Laki-laki', 'Tukang Pasang Bingkai 2', 0, 0),
 (26, '062022', 'PMT-01', 'Aris', 'Laki-laki', 'Tukang Pemantek Bingkai', 0, 0),
@@ -59,19 +59,20 @@ INSERT INTO `data_bonus` (`id_bonus`, `bulan`, `username`, `nama_karyawan`, `jen
 (34, '072022', 'PTG-01', 'Heru', 'Laki-laki', 'Tukang Potong Bingkai', 0, 0),
 (35, '082022', 'ADM-01', 'Ami', 'Perempuan', 'Admin Divisi', 20000, 0),
 (36, '082022', 'PSG-01', 'Hamdan', 'Laki-laki', 'Tukang Pasang Bingkai 1', 50000, 0),
-(37, '082022', 'PSG-02', 'Chandra', 'Laki-laki', 'Tukang Pasang Bingkai 2', 0, 0),
+(37, '082022', 'PSG-02', 'Chandra', 'Laki-laki', 'Tukang Pasang Bingkai 2', 0, 100001),
 (38, '082022', 'PMT-01', 'Aris', 'Laki-laki', 'Tukang Pemantek Bingkai', 0, 0),
 (39, '082022', 'ADM-02', 'Rowi', 'Laki-laki', 'Admin Kios', 0, 0),
 (40, '052022', 'PTG-01', 'Heru', 'Laki-laki', 'Tukang Potong Bingkai', 60000, 2250000),
-(41, '052022', 'PSG-02', 'Chandra', 'Laki-laki', 'Tukang Pasang Bingkai 2', 75000, 1750000),
-(42, '052022', 'PMT-01', 'Aris', 'Laki-laki', 'Tukang Pemantek Bingkai', 75000, 2250000),
-(43, '052022', 'ADM-02', 'Rowi', 'Laki-laki', 'Admin Kios', 90000, 2000000),
+(41, '052022', 'PSG-02', 'Chandra', 'Laki-laki', 'Tukang Pasang Bingkai 2', 75000, 2250000),
+(42, '052022', 'PMT-01', 'Aris', 'Laki-laki', 'Tukang Pemantek Bingkai', 75000, 2000000),
+(43, '052022', 'ADM-02', 'Rowi', 'Laki-laki', 'Admin Kios', 200000, 2250000),
 (44, '082022', 'PTG-01', 'Heru', 'Laki-laki', 'Tukang Potong Bingkai', 0, 0),
 (45, '092022', 'ADM-01', 'Ami', 'Perempuan', 'Admin Divisi', 1, 6),
 (46, '092022', 'PSG-01', 'Hamdan', 'Laki-laki', 'Tukang Pasang Bingkai 1', 2, 5),
 (47, '092022', 'PSG-02', 'Chandra', 'Laki-laki', 'Tukang Pasang Bingkai 2', 3, 4),
 (48, '092022', 'PMT-01', 'Aris', 'Laki-laki', 'Tukang Pemantek Bingkai', 4, 3),
-(49, '092022', 'ADM-02', 'Rowi', 'Laki-laki', 'Admin Kios', 5, 2);
+(49, '092022', 'ADM-02', 'Rowi', 'Laki-laki', 'Admin Kios', 5, 2),
+(50, '052022', 'PSG-01', 'Hamdan', 'Laki-laki', 'Tukang Pasang Bingkai 1', 75000, 1750000);
 
 -- --------------------------------------------------------
 
@@ -151,7 +152,7 @@ CREATE TABLE `data_kehadiran` (
 --
 
 INSERT INTO `data_kehadiran` (`id_kehadiran`, `bulan`, `username`, `nama_karyawan`, `jenis_kelamin`, `nama_jabatan`, `hadir`, `libur`, `alpha`) VALUES
-(67, '062022', 'ADM-01', 'Ami', 'Perempuan', 'Admin Divisi', 25, 5, 0),
+(67, '062022', 'ADM-01', 'Ami', 'Perempuan', 'Admin Divisi', 20, 5, 5),
 (68, '062022', 'PSG-01', 'Hamdan', 'Laki-laki', 'Tukang Pasang Bingkai 1', 25, 5, 0),
 (69, '062022', 'PSG-02', 'Chandra', 'Laki-laki', 'Tukang Pasang Bingkai 2', 25, 5, 0),
 (70, '062022', 'PMT-01', 'Aris', 'Laki-laki', 'Tukang Pemantek Bingkai', 25, 5, 0),
@@ -170,7 +171,9 @@ INSERT INTO `data_kehadiran` (`id_kehadiran`, `bulan`, `username`, `nama_karyawa
 (83, '082022', 'PSG-01', 'Hamdan', 'Laki-laki', 'Tukang Pasang Bingkai 1', 16, 0, 3),
 (84, '082022', 'PSG-02', 'Chandra', 'Laki-laki', 'Tukang Pasang Bingkai 2', 19, 0, 0),
 (85, '082022', 'PMT-01', 'Aris', 'Laki-laki', 'Tukang Pemantek Bingkai', 19, 0, 0),
-(86, '082022', 'ADM-02', 'Rowi', 'Laki-laki', 'Admin Kios', 19, 0, 0);
+(86, '082022', 'ADM-02', 'Rowi', 'Laki-laki', 'Admin Kios', 19, 0, 0),
+(87, '082022', 'PTG-01', 'Heru', 'Laki-laki', 'Tukang Potong Bingkai', 19, 0, 0),
+(88, '052022', 'PTG-01', 'Heru', 'Laki-laki', 'Tukang Potong Bingkai', 23, 8, 0);
 
 -- --------------------------------------------------------
 
@@ -259,7 +262,7 @@ ALTER TABLE `hak_akses`
 -- AUTO_INCREMENT untuk tabel `data_bonus`
 --
 ALTER TABLE `data_bonus`
-  MODIFY `id_bonus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id_bonus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_jabatan`
@@ -277,7 +280,7 @@ ALTER TABLE `data_karyawan`
 -- AUTO_INCREMENT untuk tabel `data_kehadiran`
 --
 ALTER TABLE `data_kehadiran`
-  MODIFY `id_kehadiran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id_kehadiran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
 
 --
 -- AUTO_INCREMENT untuk tabel `data_potongan_gaji`
